@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.launcher {
+  border-right: 1px solid #5c6f7c;
+}
+
+.navdark {
+  
+  background-color: #283e4a;
+}
+
+.navdark a {
+  color: #c7d1d8 !important;
+}

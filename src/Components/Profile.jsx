@@ -21,7 +21,7 @@ class Profile extends React.Component {
     componentDidMount = async ()=> {
         let resp = await fetch("https://strive-school-testing-apis.herokuapp.com/api/profile/me", {
             headers: {
-                "Authorization": "basic YWRtaW46c3VwZXJzZWNyZXQ="
+                "Authorization": "basic dXNlcjIzOjJhazlFNXFxQkt2VjJ3a3k="
             }
         })
 
