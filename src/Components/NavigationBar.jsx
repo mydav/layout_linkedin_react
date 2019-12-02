@@ -23,6 +23,7 @@ import {
   NavText,
   NavbarText
 } from 'reactstrap';
+import '../index.css';
 
 const NavigationBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +32,7 @@ const NavigationBar = (props) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar className='navdark' expand="md">
         <NavbarBrand href="/">Logo</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -39,6 +40,8 @@ const NavigationBar = (props) => {
             <NavItem>  
               <Input type="text" placeholder="Search" />
             </NavItem>
+          </Nav>
+          <Nav className='rightNav ml-auto' navbar>
             <NavItem>
               <NavLink href="./">Home</NavLink>
             </NavItem>
@@ -51,7 +54,7 @@ const NavigationBar = (props) => {
             <NavItem>
               <NavLink href="./">Messaging</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
+            <UncontrolledDropdown className="launcher" nav inNavbar>
               <DropdownToggle nav caret>
               Profile
               </DropdownToggle>
@@ -77,7 +80,39 @@ const NavigationBar = (props) => {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+              Work
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem>
+                  Insights
+                </DropdownItem>
+                <DropdownItem>
+                  Post a job
+                </DropdownItem>
+                <DropdownItem>
+                  Advertise
+                </DropdownItem>
+                <DropdownItem>
+                  Groups
+                </DropdownItem>
+                <DropdownItem>
+                  ProFinder
+                </DropdownItem>
+                <DropdownItem>
+                  Salary
+                </DropdownItem>
+                <DropdownItem>
+                  Slideshare
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <NavItem>
+              <NavLink href="./">Learning</NavLink>
+            </NavItem>
           </Nav>
+          
         </Collapse>
       </Navbar>
     </div>

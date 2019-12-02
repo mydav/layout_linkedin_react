@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Profile from "./Profile";
 import NavigationBar from "./NavigationBar";
+import '../index.css';
 
 
 
