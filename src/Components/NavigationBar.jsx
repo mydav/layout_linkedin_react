@@ -24,6 +24,7 @@ import {
   NavbarText
 } from 'reactstrap';
 import '../index.css';
+import logo from './logo.png';
 
 const NavigationBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +34,7 @@ const NavigationBar = (props) => {
   return (
     <div>
       <Navbar className='navdark' expand="md">
-        <NavbarBrand href="/">Logo</NavbarBrand>
+        <NavbarBrand href="./"><img src={logo} weight="40px" height="40px" alt="Logo" /></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
