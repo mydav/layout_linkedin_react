@@ -9,6 +9,7 @@ class Profile extends React.Component {
     state = { 
         profile: null
      }
+     
     render() { 
         return ( 
                <Container>
