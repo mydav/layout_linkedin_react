@@ -33,7 +33,7 @@ const NavigationBar = (props) => {
   return (
     <div>
       <Navbar className='navdark' expand="md">
-        <NavbarBrand href="/">Logo</NavbarBrand>
+        <NavbarBrand href="./"><img src={"./logo.png"} /></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
