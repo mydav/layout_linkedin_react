@@ -8,6 +8,8 @@ import {
 import Profile from "./Profile";
 import NavigationBar from "./NavigationBar";
 import '../index.css';
+import Experience from "./Experience";
+import Footer from "./FooterPage";
 
 
 
@@ -20,6 +22,8 @@ class MainPage extends React.Component {
         <Router>
           <Route path="/">
             <Profile />
+            <Experience />
+            <Footer />
           </Route>
         </Router>
         </div> );
