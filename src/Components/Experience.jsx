@@ -43,7 +43,7 @@ class Experience extends React.Component {
 
 
 
-    componentExp = async ()=> {
+    componentDidMount = async ()=> {
         let resp = await fetch("https://strive-school-testing-apis.herokuapp.com/api/profile/user23/experiences", {
             method: "GET",
             headers: {
