@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileHeading from './ProfileHeading';
 import AboutUs from './AboutUs';
+import Experience from './Experience';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -44,6 +45,7 @@ class Profile extends React.Component {
         );
     }
 
+ 
 
 
     componentDidMount = async ()=> {
@@ -59,5 +61,7 @@ class Profile extends React.Component {
         })
     }
 }
+
+
  
 export default Profile;

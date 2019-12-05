@@ -1,62 +1,61 @@
 import React from 'react';
-import ExperienceHeading from './ExperienceHeading';
-
-import AboutUs from './AboutUs';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import {Row, Col, Container} from 'reactstrap';
 
 class Experience extends React.Component {
-    state = { 
-        experience: null
-     }
+    state = {
+        experiences: ""
+    }
 
-    render() { 
-        return ( 
-               <Container>
+    render() {
+        console.log(this.state.experiences);
+        return (
+            <Container>
             <Row>
                 <Col xs={12} md={8}>
                 <div className="profileWrapper">
                     
+                    
                     <div className="botProfileWrapper">
-                        { this.state.experience ? 
-                        <> 
-                        <ExperienceHeading experience={this.state.experience}></ExperienceHeading>
-                        <AboutUs aboutUs={this.state.experience.role}></AboutUs> </>
-                        : <h1>Experience info still loading</h1>
-                        }
+                    {this.state.experiences && this.state.experiences.map((experience, index)=>(
+                         <div key={index} className="userexperience">
+                    <h3>{experience.company}</h3>
+                    <h5>{experience.role}</h5>
+                    <h6>{experience.description}</h6>
+                    
+                       
+                    
+                     </div>
+                    ))}
+
                     </div>
                 </div> 
                 </Col>
 
-                <Col xs={6} md={4}>
-                <div className="rightSidebar">
-
-                </div>
-                </Col>
+                
             </Row>
         </Container>
-           
-         
+
+
+        
         );
     }
 
-
-
-    componentDidMount = async ()=> {
-        let resp = await fetch("https://strive-school-testing-apis.herokuapp.com/api/profile/user23/experiences", {
+    componentDidMount = async () => {
+        let username = "user23";
+        let password = "2ak9E5qqBKvV2wky";
+        let token = btoa(username + ":" + password)
+        let response = await fetch("https://striveschool.herokuapp.com/api/profile/user23/experiences", {
             method: "GET",
             headers: {
-                "Authorization": "basic dXNlcjIzOjJhazlFNXFxQkt2VjJ3a3k="
-      
+                Authorization: "Basic " + token,
             }
-        })
-
-        let exp = await resp.json()
+        });
+        let exp = await response.json()
         this.setState({
-            experience: exp
-        })
-    }
+            experiences: exp
+        });
+    };
+
 }
- 
+
 export default Experience;
