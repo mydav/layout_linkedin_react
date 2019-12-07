@@ -1,7 +1,8 @@
 import React from 'react';
 import ProfileHeading from './ProfileHeading';
 import AboutUs from './AboutUs';
-import Experience from './Experience';
+import AboutUsers from './AboutUsers';
+import SideBar from './SideBar';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -33,9 +34,11 @@ class Profile extends React.Component {
                 </Col>
 
                 <Col xs={6} md={4}>
-                <div className="rightSidebar">
-
-                </div>
+                
+                
+                    {this.state.users && <div className="p-3">{this.state.users.map((u,i)=>(<SideBar user={u} key={i} />))}</div>}
+                
+                
                 </Col>
             </Row>
         </Container>
@@ -49,6 +52,7 @@ class Profile extends React.Component {
 
 
     componentDidMount = async ()=> {
+        this.fetchingUsers()
         let resp = await fetch("https://strive-school-testing-apis.herokuapp.com/api/profile/me", {
             headers: {
                 "Authorization": "basic dXNlcjIzOjJhazlFNXFxQkt2VjJ3a3k="
@@ -58,6 +62,25 @@ class Profile extends React.Component {
         let prof = await resp.json()
         this.setState({
             profile: prof
+        })
+    }
+
+    fetchingUsers = async() => {
+        
+        this.setState({
+            loading: true
+        })
+        
+        let response = await fetch("https://strive-school-testing-apis.herokuapp.com/api/profile", {
+            method: "GET",
+            headers: {
+                "Authorization": "basic dXNlcjIzOjJhazlFNXFxQkt2VjJ3a3k="
+            }
+        })
+        let usersData = await response.json()
+        this.setState({
+            loading: false,
+            users: usersData
         })
     }
 }
