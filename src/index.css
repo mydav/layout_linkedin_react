@@ -26,13 +26,13 @@ code {
 }
 
 .rightSidebar {
-  border: 0.5px solid gray;
-    
+    border: 0.5px solid gray;
+    overflow:hidden;
     padding: 0px;
     margin-left: 10px;
     margin-top: 10px;
-    height: 600px;
-    background-color: #283e4a; 
+    height: 100px;
+    
     
     
 }
@@ -69,3 +69,4 @@ code {
   width: 200px;
   height: 200px;
 }
+

@@ -33,10 +33,10 @@ class Profile extends React.Component {
                 </div> 
                 </Col>
 
-                <Col xs={6} md={4}>
+                <Col xs={6} md={4} >
                 
                 
-                    {this.state.users && <div className="p-3">{this.state.users.map((u,i)=>(<SideBar user={u} key={i} />))}</div>}
+                    {this.state.users && <div>{this.state.users.map((u,i)=>(<SideBar user={u} key={i} />))}</div>}
                 
                 
                 </Col>
