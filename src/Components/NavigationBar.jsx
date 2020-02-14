@@ -25,8 +25,28 @@ import {
 } from 'reactstrap';
 import '../index.css';
 import logo from './logo.png';
+import { BehaviorSubject } from 'rxjs';
+import {connect} from 'react-redux'
+
+const mapStateToProps = state => state
+const mapDispatchToProps = dispatch => ({
+    setUserToken: base64 => dispatch({
+      type:"SET_USERBASE64",
+      payload: base64
+    }) 
+  })
+
+const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('access_token')));
 
 const NavigationBar = (props) => {
+
+  function logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('access_token');
+    currentUserSubject.next(null);
+    props.setUserToken(undefined)
+}
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -55,6 +75,7 @@ const NavigationBar = (props) => {
             <NavItem>
               <NavLink href="./">Messaging</NavLink>
             </NavItem>
+            {props.userToken ? <>
             <UncontrolledDropdown className="launcher" nav inNavbar>
               <DropdownToggle nav caret>
               Profile
@@ -112,6 +133,18 @@ const NavigationBar = (props) => {
             <NavItem>
               <NavLink href="./">Learning</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink onClick={logout} to="/">Logout</NavLink>
+            </NavItem>
+            </>
+          : <>
+            <NavItem>
+              <NavLink href="./login">Sign in</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="./">Sign Up</NavLink>
+            </NavItem>
+            </>}
           </Nav>
           
         </Collapse>
@@ -119,4 +152,5 @@ const NavigationBar = (props) => {
     </div>
   );
 }
-export default NavigationBar;
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar);

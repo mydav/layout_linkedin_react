@@ -44,7 +44,7 @@ class Experience extends React.Component {
         let username = "user23";
         let password = "2ak9E5qqBKvV2wky";
         let token = btoa(username + ":" + password)
-        let response = await fetch("https://striveschool.herokuapp.com/api/profile/user23/experiences", {
+        let response = await fetch("http://localhost:7000/profiles/admin1/experiences", {
             method: "GET",
             headers: {
                 Authorization: "Basic " + token,
